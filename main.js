@@ -122,6 +122,8 @@
 	    }
 	  });
 	
+	  console.log((/muuvie/))
+	
 	  var routes = (
 	    React.createElement(Route, {path: (/muuvie/), handler: App}, 
 	      React.createElement(DefaultRoute, {name: "home", handler: PageViewController}), 
