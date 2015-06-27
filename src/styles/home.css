@@ -1,0 +1,116 @@
+.HomePage {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.SearchInput {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: block;
+  width: 40%;
+  height: 8rem;
+  line-height: 8rem;
+  font-size: 3.2rem;
+  color: #000;
+  overflow: hidden;
+  transform: translateX(-50%) translateY(-50%);
+  border-bottom: 1px solid #dadada;
+  animation: SearchInputIn .3s 1 ease forwards;
+}
+
+.SearchInput.is-focused {
+  border-bottom-color: #000;
+}
+
+.SearchInput-inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 8rem;
+  z-index: 20;
+}
+
+.SearchInput-inner
+  > * {
+    vertical-align: middle;
+  }
+
+.SearchInput-cursor {
+  width: 1px;
+  margin-right: -1px;
+  height: 6rem;
+  background: #000000;
+  animation: blink infinite 1s steps(1);
+}
+
+.SearchInput.is-focused
+  .SearchInput-cursor {
+    display: inline-block;
+  }
+
+.SearchInput-placeHolder {
+  color: #dadada;
+}
+
+.SearchInput.is-empty
+  .SearchInput-placeHolder {
+    display: inline-block;
+  }
+
+.SearchInput-input {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: transparent;
+  z-index: 50;
+}
+
+.AutoComplete {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 4rem);
+  width: 40%;
+  transform: translateX(-50%);
+  padding: 10px 0;
+  color: #dadada;
+  border-top: none;
+}
+
+.AutoComplete-item {
+  font-size: 1.8rem;
+  padding: 6px 16px;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes SearchInputIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}

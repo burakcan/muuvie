@@ -1,0 +1,39 @@
+{
+  "name": "muuvie",
+  "version": "1.0.0",
+  "description": "A basic movie search application using OMDB api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-dev": "__ENV__=DEVELOPMENT node build.js",
+    "build-prod": "__ENV__=PRODUCTION node build.js",
+    "deploy": "__ENV__=PRODUCTION __BASE__=/muuvie/ node build.js && git-directory-deploy --directory dist/ --verbose"
+  },
+  "keywords": [
+    "movie",
+    "omdb",
+    "react"
+  ],
+  "author": "Burak Can <neoberg@gmail.com> (http://burakcan.me/)",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "bluebird": "^2.9.30",
+    "css-loader": "^0.14.5",
+    "extend-object": "^1.0.0",
+    "file-loader": "^0.8.4",
+    "flux": "^2.0.3",
+    "git-directory-deploy": "^1.1.0",
+    "html-webpack-plugin": "^1.5.2",
+    "immutable": "^3.7.4",
+    "jsx-loader": "^0.13.2",
+    "node-libs-browser": "^0.5.2",
+    "npm": "^2.12.0",
+    "orejs": "^0.1.0",
+    "react": "^0.13.3",
+    "react-router": "^0.13.3",
+    "style-loader": "^0.12.3",
+    "superagent": "^1.2.0",
+    "webpack": "^1.9.11",
+    "webpack-dev-server": "^1.9.0"
+  }
+}

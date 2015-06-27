@@ -1,0 +1,116 @@
+.MoviePage {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.MoviePage-poster-wrapper {
+  height: 100vh;
+  width: 40vw;
+  position: relative;
+  overflow: hidden;
+  transform: translateX(-100%);
+  animation: Poster .5s .1s 1 ease forwards;
+  float: left;
+}
+
+.MoviePage-poster-wrapper:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 200%;
+  height: 200%;
+  z-index: 60;
+  transform: translateX(-50%) translateY(-50%);
+  box-shadow: inset 3px 140px 70px #000;
+}
+
+.MoviePage-poster {
+  background-color: #000;
+  width: 50%;
+  position: absolute;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 40;
+}
+
+.MoviePage-poster[src='http://crossorigin.me/N/A'] {
+  display: none;
+}
+
+.MoviePage-poster.is-blurry {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  -webkit-filter: blur(20px);
+  transform: scale(2);
+}
+
+.MoviePage-content {
+  width: 60vw;
+  height: 100vh;
+  overflow: auto;
+  float: left;
+  padding: 40px;
+  animation: FadeIn 1s 1 ease forwards;
+}
+
+.MoviePage-title {
+  display: block;
+  padding: 0 0 14px;
+  margin: 0;
+  font-weight: 200;
+  font-size: 2.2rem;
+  border-bottom: 1px solid;
+}
+
+.MoviePage-plot {
+  color: #000;
+  font-size: 1.4rem;
+  line-height: 2.4rem;
+  margin: 0;
+  padding: 24px 0;
+  width: 100%;
+  clear: both;
+}
+
+.MoviePage-meta {
+  padding: 24px 0 0;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  color: #aaa;
+}
+
+.MoviePage-meta-title {
+  margin-right: 6px;
+}
+
+.MoviePage-video {
+  margin: 24px 0;
+}
+
+.MoviePage-video iframe {
+  border: none;
+  width: 100%;
+}
+
+@keyframes Poster {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
