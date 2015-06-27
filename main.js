@@ -122,8 +122,10 @@
 	    }
 	  });
 	
+	  console.log((/muuvie/));
+	
 	  var routes = (
-	    React.createElement(Route, {path: "/muuvie/", handler: App}, 
+	    React.createElement(Route, {path: (/muuvie/), handler: App}, 
 	      React.createElement(DefaultRoute, {name: "home", handler: PageViewController}), 
 	      React.createElement(Route, {name: "search", path: "/search/:searchTerm", handler: PageViewController}), 
 	      React.createElement(Route, {name: "movie", path: "/movie/:imdbID", handler: PageViewController}), 
