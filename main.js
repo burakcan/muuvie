@@ -122,17 +122,15 @@
 	    }
 	  });
 	
-	  console.log((/muuvie/))
-	
 	  var routes = (
-	    React.createElement(Route, {path: (/muuvie/), handler: App}, 
+	    React.createElement(Route, {path: "/muuvie/", handler: App}, 
 	      React.createElement(DefaultRoute, {name: "home", handler: PageViewController}), 
-	      React.createElement(Route, {name: "search", path: (/muuvie/)+'search/:searchTerm', handler: PageViewController}), 
-	      React.createElement(Route, {name: "movie", path: (/muuvie/)+'movie/:imdbID', handler: PageViewController}), 
+	      React.createElement(Route, {name: "search", path: "/search/:searchTerm", handler: PageViewController}), 
+	      React.createElement(Route, {name: "movie", path: "/movie/:imdbID", handler: PageViewController}), 
 	
-	      React.createElement(Redirect, {from: (/muuvie/)+'/search/:searchTerm/', to: "search"}), 
-	      React.createElement(Redirect, {from: (/muuvie/)+'/search/', to: (/muuvie/)+'/'}), 
-	      React.createElement(Redirect, {from: (/muuvie/)+'/search', to: (/muuvie/)+'/'})
+	      React.createElement(Redirect, {from: "/search/:searchTerm/", to: "search"}), 
+	      React.createElement(Redirect, {from: "/search/", to: "/"}), 
+	      React.createElement(Redirect, {from: "/search", to: "/"})
 	    )
 	  );
 	
