@@ -31,7 +31,7 @@ var config             = {
     })
   ],
   resolve              : {
-    extensions         : ['', '.js', '.css'],
+    extensions         : ['', '.js', '.css', '.svg', '.png'],
     alias              : {
       'root'           : path.join(__dirname, 'src/'),
       'components'     : path.join(__dirname, 'src/components'),

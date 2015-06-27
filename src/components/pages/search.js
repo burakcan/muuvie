@@ -5,6 +5,7 @@ var Spinner               = require('components/spinner');
 var Ore                   = require('orejs');
 var MovieStore            = require('stores/movie');
 var ListItem              = require('components/movielistitem');
+var NoResult              = require('components/noresult');
 
 require('styles/search');
 
@@ -55,7 +56,7 @@ module.exports = React.createClass({
       return (<Spinner />);
 
     if (!this.state['movie:result'].size)
-      return (<div>No result</div>);
+      return (<NoResult />);
 
     return (
       <div className='Page SearchPage'>

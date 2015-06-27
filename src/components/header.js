@@ -2,7 +2,7 @@ var React                 = require('react/addons');
 var Router                = require('react-router');
 var Link                  = Router.Link;
 var PureRenderMixin       = React.addons.PureRenderMixin;
-var icons                 = require('assets/icons.svg');
+var icons                 = require('assets/icons');
 
 var icons                 = {
   search                  : '<svg class="icon-search"><use xlink:href="'+icons+'#icon-search"></use></svg>',
