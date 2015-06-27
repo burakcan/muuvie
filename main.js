@@ -1,1 +1,459 @@
-!function(e){function t(n){if(r[n])return r[n].exports;var a=r[n]={exports:{},id:n,loaded:!1};return e[n].call(a.exports,a,a.exports,t),a.loaded=!0,a.exports}var n=window.webpackJsonp;window.webpackJsonp=function(r,i){for(var o,s,u=0,l=[];u<r.length;u++)s=r[u],a[s]&&l.push.apply(l,a[s]),a[s]=0;for(o in i)e[o]=i[o];for(n&&n(r,i);l.length;)l.shift().call(null,t)};var r={},a={0:0};return t.e=function(e,n){if(0===a[e])return n.call(null,t);if(void 0!==a[e])a[e].push(n);else{a[e]=[n];var r=document.getElementsByTagName("head")[0],i=document.createElement("script");i.type="text/javascript",i.charset="utf-8",i.async=!0,i.src=t.p+""+e+"."+({}[e]||e)+".js",r.appendChild(i)}},t.m=e,t.c=r,t.p="/muuvie/",t(0)}([function(e,t,n){n(1),n.e(1,function(){var e=n(5),t=n(178),r=t.Route,a=t.DefaultRoute,i=t.RouteHandler,o=t.Redirect,s=n(218),u=n(246);n(232);n(250),n(252);var l=e.createClass({displayName:"App",render:function(){return e.createElement("main",null,e.createElement(u,null),e.createElement(i,null))}}),c=e.createElement(r,{path:/muuvie/,handler:l},e.createElement(a,{name:"home",handler:s}),e.createElement(r,{name:"search",path:"/muuvie/search/:searchTerm",handler:s}),e.createElement(r,{name:"movie",path:"/muuvie/movie/:imdbID",handler:s}),e.createElement(o,{from:"/muuvie//search/:searchTerm/",to:"search"}),e.createElement(o,{from:"/muuvie//search/",to:"/muuvie//"}),e.createElement(o,{from:"/muuvie//search",to:"/muuvie//"}));t.run(c,t.HistoryLocation,function(t,n){e.render(e.createElement(t,null),document.getElementById("render"))})})},function(e,t,n){var r=n(2);"string"==typeof r&&(r=[[e.id,r,""]]);n(4)(r,{});r.locals&&(e.exports=r.locals)},function(e,t,n){t=e.exports=n(3)(),t.push([e.id,".Spinner{position:fixed;left:50%;top:50%;margin-left:-35px;margin-top:-10px;width:70px;text-align:center}.Spinner>div{width:18px;height:18px;background-color:#333;border-radius:100%;display:inline-block;animation:bouncedelay 1s infinite ease-in-out;animation-fill-mode:both}.Spinner .Spinner-bounce1{animation-delay:-.32s}.Spinner .Spinner-bounce2{animation-delay:-.16s}@keyframes bouncedelay{0%,100%,80%{transform:scale(0);-webkit-transform:scale(0)}40%{transform:scale(1);-webkit-transform:scale(1)}}",""])},function(e,t){e.exports=function(){var e=[];return e.toString=function(){for(var e=[],t=0;t<this.length;t++){var n=this[t];n[2]?e.push("@media "+n[2]+"{"+n[1]+"}"):e.push(n[1])}return e.join("")},e.i=function(t,n){"string"==typeof t&&(t=[[null,t,""]]);for(var r={},a=0;a<this.length;a++){var i=this[a][0];"number"==typeof i&&(r[i]=!0)}for(a=0;a<t.length;a++){var o=t[a];"number"==typeof o[0]&&r[o[0]]||(n&&!o[2]?o[2]=n:n&&(o[2]="("+o[2]+") and ("+n+")"),e.push(o))}},e}},function(e,t,n){function r(e,t){for(var n=0;n<e.length;n++){var r=e[n],a=f[r.id];if(a){a.refs++;for(var i=0;i<a.parts.length;i++)a.parts[i](r.parts[i]);for(;i<r.parts.length;i++)a.parts.push(s(r.parts[i],t))}else{for(var o=[],i=0;i<r.parts.length;i++)o.push(s(r.parts[i],t));f[r.id]={id:r.id,refs:1,parts:o}}}}function a(e){for(var t=[],n={},r=0;r<e.length;r++){var a=e[r],i=a[0],o=a[1],s=a[2],u=a[3],l={css:o,media:s,sourceMap:u};n[i]?n[i].parts.push(l):t.push(n[i]={id:i,parts:[l]})}return t}function i(){var e=document.createElement("style"),t=m();return e.type="text/css",t.appendChild(e),e}function o(){var e=document.createElement("link"),t=m();return e.rel="stylesheet",t.appendChild(e),e}function s(e,t){var n,r,a;if(t.singleton){var s=v++;n=h||(h=i()),r=u.bind(null,n,s,!1),a=u.bind(null,n,s,!0)}else e.sourceMap&&"function"==typeof URL&&"function"==typeof URL.createObjectURL&&"function"==typeof URL.revokeObjectURL&&"function"==typeof Blob&&"function"==typeof btoa?(n=o(),r=c.bind(null,n),a=function(){n.parentNode.removeChild(n),n.href&&URL.revokeObjectURL(n.href)}):(n=i(),r=l.bind(null,n),a=function(){n.parentNode.removeChild(n)});return r(e),function(t){if(t){if(t.css===e.css&&t.media===e.media&&t.sourceMap===e.sourceMap)return;r(e=t)}else a()}}function u(e,t,n,r){var a=n?"":r.css;if(e.styleSheet)e.styleSheet.cssText=g(t,a);else{var i=document.createTextNode(a),o=e.childNodes;o[t]&&e.removeChild(o[t]),o.length?e.insertBefore(i,o[t]):e.appendChild(i)}}function l(e,t){var n=t.css,r=t.media;t.sourceMap;if(r&&e.setAttribute("media",r),e.styleSheet)e.styleSheet.cssText=n;else{for(;e.firstChild;)e.removeChild(e.firstChild);e.appendChild(document.createTextNode(n))}}function c(e,t){var n=t.css,r=(t.media,t.sourceMap);r&&(n+="\n/*# sourceMappingURL=data:application/json;base64,"+btoa(unescape(encodeURIComponent(JSON.stringify(r))))+" */");var a=new Blob([n],{type:"text/css"}),i=e.href;e.href=URL.createObjectURL(a),i&&URL.revokeObjectURL(i)}var f={},p=function(e){var t;return function(){return"undefined"==typeof t&&(t=e.apply(this,arguments)),t}},d=p(function(){return/msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase())}),m=p(function(){return document.head||document.getElementsByTagName("head")[0]}),h=null,v=0;e.exports=function(e,t){t=t||{},"undefined"==typeof t.singleton&&(t.singleton=d());var n=a(e);return r(n,t),function(e){for(var i=[],o=0;o<n.length;o++){var s=n[o],u=f[s.id];u.refs--,i.push(u)}if(e){var l=a(e);r(l,t)}for(var o=0;o<i.length;o++){var u=i[o];if(0===u.refs){for(var c=0;c<u.parts.length;c++)u.parts[c]();delete f[u.id]}}}};var g=function(){var e=[];return function(t,n){return e[t]=n,e.filter(Boolean).join("\n")}}()}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// install a JSONP callback for chunk loading
+/******/ 	var parentJsonpFunction = window["webpackJsonp"];
+/******/ 	window["webpackJsonp"] = function webpackJsonpCallback(chunkIds, moreModules) {
+/******/ 		// add "moreModules" to the modules object,
+/******/ 		// then flag all "chunkIds" as loaded and fire callback
+/******/ 		var moduleId, chunkId, i = 0, callbacks = [];
+/******/ 		for(;i < chunkIds.length; i++) {
+/******/ 			chunkId = chunkIds[i];
+/******/ 			if(installedChunks[chunkId])
+/******/ 				callbacks.push.apply(callbacks, installedChunks[chunkId]);
+/******/ 			installedChunks[chunkId] = 0;
+/******/ 		}
+/******/ 		for(moduleId in moreModules) {
+/******/ 			modules[moduleId] = moreModules[moduleId];
+/******/ 		}
+/******/ 		if(parentJsonpFunction) parentJsonpFunction(chunkIds, moreModules);
+/******/ 		while(callbacks.length)
+/******/ 			callbacks.shift().call(null, __webpack_require__);
+/******/
+/******/ 	};
+/******/
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// object to store loaded and loading chunks
+/******/ 	// "0" means "already loaded"
+/******/ 	// Array means "loading", array contains callbacks
+/******/ 	var installedChunks = {
+/******/ 		0:0
+/******/ 	};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+/******/
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/ 	// This file contains only the entry chunk.
+/******/ 	// The chunk loading function for additional chunks
+/******/ 	__webpack_require__.e = function requireEnsure(chunkId, callback) {
+/******/ 		// "0" is the signal for "already loaded"
+/******/ 		if(installedChunks[chunkId] === 0)
+/******/ 			return callback.call(null, __webpack_require__);
+/******/
+/******/ 		// an array means "currently loading".
+/******/ 		if(installedChunks[chunkId] !== undefined) {
+/******/ 			installedChunks[chunkId].push(callback);
+/******/ 		} else {
+/******/ 			// start chunk loading
+/******/ 			installedChunks[chunkId] = [callback];
+/******/ 			var head = document.getElementsByTagName('head')[0];
+/******/ 			var script = document.createElement('script');
+/******/ 			script.type = 'text/javascript';
+/******/ 			script.charset = 'utf-8';
+/******/ 			script.async = true;
+/******/
+/******/ 			script.src = __webpack_require__.p + "" + chunkId + "." + ({}[chunkId]||chunkId) + ".js";
+/******/ 			head.appendChild(script);
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/muuvie/";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(1);
+	
+	__webpack_require__.e/* nsure */(1, function(){
+	  var React                 = __webpack_require__(5);
+	  var Router                = __webpack_require__(178);
+	  var Route                 = Router.Route;
+	  var DefaultRoute          = Router.DefaultRoute;
+	  var RouteHandler          = Router.RouteHandler;
+	  var Redirect              = Router.Redirect;
+	  var PageViewController    = __webpack_require__(218);
+	  var Header                = __webpack_require__(246);
+	  var MovieStore            = __webpack_require__(232);
+	
+	  __webpack_require__(250);
+	  __webpack_require__(252);
+	
+	  var App = React.createClass({displayName: "App",
+	    render: function(){
+	      return (
+	        React.createElement("main", null, 
+	          React.createElement(Header, null), 
+	          React.createElement(RouteHandler, null)
+	        )
+	      )
+	    }
+	  });
+	
+	  var routes = (
+	    React.createElement(Route, {path: (/muuvie/), handler: App}, 
+	      React.createElement(DefaultRoute, {name: "home", handler: PageViewController}), 
+	      React.createElement(Route, {name: "search", path: (/muuvie/)+'search/:searchTerm', handler: PageViewController}), 
+	      React.createElement(Route, {name: "movie", path: (/muuvie/)+'movie/:imdbID', handler: PageViewController}), 
+	
+	      React.createElement(Redirect, {from: (/muuvie/)+'/search/:searchTerm/', to: "search"}), 
+	      React.createElement(Redirect, {from: (/muuvie/)+'/search/', to: (/muuvie/)+'/'}), 
+	      React.createElement(Redirect, {from: (/muuvie/)+'/search', to: (/muuvie/)+'/'})
+	    )
+	  );
+	
+	  Router.run(routes, Router.HistoryLocation, function(Handler, state){
+	    React.render(React.createElement(Handler, null), document.getElementById('render'));
+	  });
+	});
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(2);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./spinner.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./spinner.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	exports.push([module.id, ".Spinner {\n  position: fixed;\n  left: 50%;\n  top: 50%;\n  margin-left: -35px;\n  margin-top: -10px;\n  width: 70px;\n  text-align: center;\n}\n\n.Spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n  border-radius: 100%;\n  display: inline-block;\n  animation: bouncedelay 1s infinite ease-in-out;\n  animation-fill-mode: both;\n}\n\n.Spinner .Spinner-bounce1 {\n  animation-delay: -0.32s;\n}\n\n.Spinner .Spinner-bounce2 {\n  animation-delay: -0.16s;\n}\n\n@keyframes bouncedelay {\n  0%, 80%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 40% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n", ""]);
+
+/***/ },
+/* 3 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+	
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+	
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	var stylesInDom = {},
+		memoize = function(fn) {
+			var memo;
+			return function () {
+				if (typeof memo === "undefined") memo = fn.apply(this, arguments);
+				return memo;
+			};
+		},
+		isOldIE = memoize(function() {
+			return /msie [6-9]\b/.test(window.navigator.userAgent.toLowerCase());
+		}),
+		getHeadElement = memoize(function () {
+			return document.head || document.getElementsByTagName("head")[0];
+		}),
+		singletonElement = null,
+		singletonCounter = 0;
+	
+	module.exports = function(list, options) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+	
+		options = options || {};
+		// Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+		// tags it will allow on a page
+		if (typeof options.singleton === "undefined") options.singleton = isOldIE();
+	
+		var styles = listToStyles(list);
+		addStylesToDom(styles, options);
+	
+		return function update(newList) {
+			var mayRemove = [];
+			for(var i = 0; i < styles.length; i++) {
+				var item = styles[i];
+				var domStyle = stylesInDom[item.id];
+				domStyle.refs--;
+				mayRemove.push(domStyle);
+			}
+			if(newList) {
+				var newStyles = listToStyles(newList);
+				addStylesToDom(newStyles, options);
+			}
+			for(var i = 0; i < mayRemove.length; i++) {
+				var domStyle = mayRemove[i];
+				if(domStyle.refs === 0) {
+					for(var j = 0; j < domStyle.parts.length; j++)
+						domStyle.parts[j]();
+					delete stylesInDom[domStyle.id];
+				}
+			}
+		};
+	}
+	
+	function addStylesToDom(styles, options) {
+		for(var i = 0; i < styles.length; i++) {
+			var item = styles[i];
+			var domStyle = stylesInDom[item.id];
+			if(domStyle) {
+				domStyle.refs++;
+				for(var j = 0; j < domStyle.parts.length; j++) {
+					domStyle.parts[j](item.parts[j]);
+				}
+				for(; j < item.parts.length; j++) {
+					domStyle.parts.push(addStyle(item.parts[j], options));
+				}
+			} else {
+				var parts = [];
+				for(var j = 0; j < item.parts.length; j++) {
+					parts.push(addStyle(item.parts[j], options));
+				}
+				stylesInDom[item.id] = {id: item.id, refs: 1, parts: parts};
+			}
+		}
+	}
+	
+	function listToStyles(list) {
+		var styles = [];
+		var newStyles = {};
+		for(var i = 0; i < list.length; i++) {
+			var item = list[i];
+			var id = item[0];
+			var css = item[1];
+			var media = item[2];
+			var sourceMap = item[3];
+			var part = {css: css, media: media, sourceMap: sourceMap};
+			if(!newStyles[id])
+				styles.push(newStyles[id] = {id: id, parts: [part]});
+			else
+				newStyles[id].parts.push(part);
+		}
+		return styles;
+	}
+	
+	function createStyleElement() {
+		var styleElement = document.createElement("style");
+		var head = getHeadElement();
+		styleElement.type = "text/css";
+		head.appendChild(styleElement);
+		return styleElement;
+	}
+	
+	function createLinkElement() {
+		var linkElement = document.createElement("link");
+		var head = getHeadElement();
+		linkElement.rel = "stylesheet";
+		head.appendChild(linkElement);
+		return linkElement;
+	}
+	
+	function addStyle(obj, options) {
+		var styleElement, update, remove;
+	
+		if (options.singleton) {
+			var styleIndex = singletonCounter++;
+			styleElement = singletonElement || (singletonElement = createStyleElement());
+			update = applyToSingletonTag.bind(null, styleElement, styleIndex, false);
+			remove = applyToSingletonTag.bind(null, styleElement, styleIndex, true);
+		} else if(obj.sourceMap &&
+			typeof URL === "function" &&
+			typeof URL.createObjectURL === "function" &&
+			typeof URL.revokeObjectURL === "function" &&
+			typeof Blob === "function" &&
+			typeof btoa === "function") {
+			styleElement = createLinkElement();
+			update = updateLink.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+				if(styleElement.href)
+					URL.revokeObjectURL(styleElement.href);
+			};
+		} else {
+			styleElement = createStyleElement();
+			update = applyToTag.bind(null, styleElement);
+			remove = function() {
+				styleElement.parentNode.removeChild(styleElement);
+			};
+		}
+	
+		update(obj);
+	
+		return function updateStyle(newObj) {
+			if(newObj) {
+				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+					return;
+				update(obj = newObj);
+			} else {
+				remove();
+			}
+		};
+	}
+	
+	var replaceText = (function () {
+		var textStore = [];
+	
+		return function (index, replacement) {
+			textStore[index] = replacement;
+			return textStore.filter(Boolean).join('\n');
+		};
+	})();
+	
+	function applyToSingletonTag(styleElement, index, remove, obj) {
+		var css = remove ? "" : obj.css;
+	
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = replaceText(index, css);
+		} else {
+			var cssNode = document.createTextNode(css);
+			var childNodes = styleElement.childNodes;
+			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+			if (childNodes.length) {
+				styleElement.insertBefore(cssNode, childNodes[index]);
+			} else {
+				styleElement.appendChild(cssNode);
+			}
+		}
+	}
+	
+	function applyToTag(styleElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if(media) {
+			styleElement.setAttribute("media", media)
+		}
+	
+		if(styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = css;
+		} else {
+			while(styleElement.firstChild) {
+				styleElement.removeChild(styleElement.firstChild);
+			}
+			styleElement.appendChild(document.createTextNode(css));
+		}
+	}
+	
+	function updateLink(linkElement, obj) {
+		var css = obj.css;
+		var media = obj.media;
+		var sourceMap = obj.sourceMap;
+	
+		if(sourceMap) {
+			// http://stackoverflow.com/a/26603875
+			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+		}
+	
+		var blob = new Blob([css], { type: "text/css" });
+	
+		var oldSrc = linkElement.href;
+	
+		linkElement.href = URL.createObjectURL(blob);
+	
+		if(oldSrc)
+			URL.revokeObjectURL(oldSrc);
+	}
+
+
+/***/ }
+/******/ ]);
+//# sourceMappingURL=main.js.map

@@ -1,1 +1,162 @@
-webpackJsonp([3],{231:function(t,e,n){var r=n(5),o=n(224),i=r.addons.PureRenderMixin,s=n(219),a=n(221),u=n(232),c=n(240);n(241),t.exports=r.createClass({displayName:"module.exports",mixins:[i,a.Mixin],statics:{willTransitionTo:function(t,e,n,r){e.searchTerm!=u.state.get("movie:searchTerm")&&o.dispatch(new a.ACTION({type:"search:submit",payload:{searchTerm:e.searchTerm}}))}},defineRequiredData:function(){return["movie:busy","movie:result","movie:searchTerm"]},renderItems:function(){var t=[];return this.state["movie:result"].forEach(function(e,n){if(!e)return!1;var o={animationDelay:.4*Math.random()+"s"};t.push(r.createElement(c,{data:e,key:n,style:o}))}),t},render:function(){return this.state["movie:busy"]?r.createElement(s,null):this.state["movie:result"].size?r.createElement("div",{className:"Page SearchPage"},r.createElement("div",{className:"ResultList"},this.renderItems())):r.createElement("div",null,"No result")}})},240:function(t,e,n){var r=n(5),o=(n(224),r.addons.PureRenderMixin),i=n(178);t.exports=r.createClass({displayName:"module.exports",mixins:[i.Navigation,o],showDetails:function(){this.transitionTo("movie",{imdbID:this.props.data.get("imdbID")})},componentDidMount:function(){var t=new Image;t.onload=function(){this.refs.Image.getDOMNode().classList.add("is-loaded")}.bind(this),t.src="http://crossorigin.me/"+this.props.data.get("Poster")},render:function(){var t=this.props.data;({backgroundColor:t.get("Color")});return r.createElement("div",{className:"MovieListItem",onClick:this.showDetails,style:this.props.style},r.createElement("figure",{className:"MovieListItem-poster",style:{backgroundColor:t.get("Color")}},r.createElement("figure",{className:"MovieListItem-poster-inner",ref:"Image",style:{backgroundImage:"url(http://crossorigin.me/"+t.get("Poster")+")"}})),r.createElement("div",{className:"MovieListItem-info"},r.createElement("h4",null,t.get("Title")),r.createElement("h6",null,t.get("Genre")||""),r.createElement("h6",null,t.get("Runtime")||"")))}})},241:function(t,e,n){var r=n(242);"string"==typeof r&&(r=[[t.id,r,""]]);n(4)(r,{});r.locals&&(t.exports=r.locals)},242:function(t,e,n){e=t.exports=n(3)(),e.push([t.id,".ResultList{padding:10px}.MovieListItem{width:20%;float:left;position:relative;padding:10px 10px 30px;overflow:hidden;opacity:0;transform:translateX(100px);animation:ItemIn .3s 1 ease forwards;cursor:pointer}.MovieListItem-poster,.MovieListItem-poster-inner{margin:0;width:100%;background-repeat:no-repeat;background-size:cover;background-position:center}.MovieListItem-poster{position:relative;border-radius:4px;overflow:hidden;padding-bottom:142%}.MovieListItem-poster-inner{position:absolute;height:100%;opacity:0}.MovieListItem-poster-inner.is-loaded{animation:FadeIn .3s .3s 1 ease forwards}.MovieListItem-info{padding:1.4rem 0}.MovieListItem-info h4{display:block;padding:0;font-size:1.4rem;font-weight:200;color:#000;margin:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.MovieListItem-info h6{display:block;padding:.5rem 0 0;font-size:1.2rem;font-weight:200;color:#aaa;margin:0}@keyframes ItemIn{0%{opacity:0;transform:translateY(100px)}100%{opacity:1;transform:translateY(0)}}",""])}});
+webpackJsonp([3],{
+
+/***/ 231:
+/***/ function(module, exports, __webpack_require__) {
+
+	var React                 = __webpack_require__(5);
+	var Dispatcher            = __webpack_require__(224);
+	var PureRenderMixin       = React.addons.PureRenderMixin;
+	var Spinner               = __webpack_require__(219);
+	var Ore                   = __webpack_require__(221);
+	var MovieStore            = __webpack_require__(232);
+	var ListItem              = __webpack_require__(240);
+	
+	__webpack_require__(241);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  mixins: [PureRenderMixin, Ore.Mixin],
+	
+	  statics: {
+	    willTransitionTo: function(transition, params, query, callback){
+	      if (params.searchTerm != MovieStore.state.get('movie:searchTerm')) {
+	        Dispatcher.dispatch(new Ore.ACTION({
+	          type: 'search:submit',
+	          payload: {
+	            searchTerm: params.searchTerm
+	          }
+	        }) );
+	      }
+	    }
+	  },
+	
+	  defineRequiredData: function(){
+	    return [
+	      'movie:busy',
+	      'movie:result',
+	      'movie:searchTerm'
+	    ]
+	  },
+	
+	  renderItems: function(){
+	    var items = [];
+	
+	    this.state['movie:result'].forEach(function(data, id){
+	      if (!data) return false;
+	      var style = {
+	        animationDelay : Math.random() * 0.4 + 's'
+	      }
+	      items.push(React.createElement(ListItem, {data: data, key: id, style: style}));
+	    });
+	
+	    return items;
+	  },
+	
+	  render: function(){
+	    if (this.state['movie:busy'])
+	      return (React.createElement(Spinner, null));
+	
+	    if (!this.state['movie:result'].size)
+	      return (React.createElement("div", null, "No result"));
+	
+	    return (
+	      React.createElement("div", {className: "Page SearchPage"}, 
+	        React.createElement("div", {className: "ResultList"}, 
+	          this.renderItems()
+	        )
+	      )
+	    )
+	  }
+	});
+
+
+/***/ },
+
+/***/ 240:
+/***/ function(module, exports, __webpack_require__) {
+
+	var React                 = __webpack_require__(5);
+	var Dispatcher            = __webpack_require__(224);
+	var PureRenderMixin       = React.addons.PureRenderMixin;
+	var Router                = __webpack_require__(178);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  mixins: [Router.Navigation ,PureRenderMixin],
+	
+	  showDetails: function(){
+	    this.transitionTo('movie', {
+	      imdbID : this.props.data.get('imdbID')
+	    });
+	  },
+	
+	  componentDidMount: function(){
+	    var img = new Image;
+	
+	    img.onload = function(){
+	      this.refs['Image'].getDOMNode().classList.add('is-loaded');
+	    }.bind(this)
+	
+	    img.src = 'http://crossorigin.me/' + this.props.data.get('Poster');
+	  },
+	
+	  render: function(){
+	    var data = this.props.data;
+	    var style = {
+	      backgroundColor: data.get('Color')
+	    };
+	    return (
+	      React.createElement("div", {className: "MovieListItem", onClick: this.showDetails, style: this.props.style}, 
+	        React.createElement("figure", {className: "MovieListItem-poster", style: {backgroundColor: data.get('Color')}}, 
+	          React.createElement("figure", {className: "MovieListItem-poster-inner", ref: "Image", style: {
+	            backgroundImage: 'url(http://crossorigin.me/' + data.get('Poster')+')'
+	          }})
+	        ), 
+	        React.createElement("div", {className: "MovieListItem-info"}, 
+	          React.createElement("h4", null, data.get('Title')), 
+	          React.createElement("h6", null, data.get('Genre') || ''), 
+	          React.createElement("h6", null, data.get('Runtime') || '')
+	        )
+	      )
+	    )
+	  }
+	});
+
+
+/***/ },
+
+/***/ 241:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(242);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./search.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./search.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 242:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	exports.push([module.id, ".ResultList {\n  padding: 10px;\n}\n\n.MovieListItem {\n  width: 20%;\n  float: left;\n  position: relative;\n  padding: 10px 10px 30px 10px;\n  overflow: hidden;\n  opacity: 0;\n  transform: translateX(100px);\n  animation: ItemIn .3s 1 ease forwards;\n  cursor: pointer;\n}\n\n.MovieListItem-poster {\n  position: relative;\n  width: 100%;\n  border-radius: 4px;\n  overflow: hidden;\n  padding-bottom: 142%;\n  margin: 0;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n}\n\n.MovieListItem-poster-inner {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  margin: 0;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  opacity: 0;\n}\n\n.MovieListItem-poster-inner.is-loaded {\n  animation: FadeIn .3s .3s 1 ease forwards;\n}\n\n.MovieListItem-info {\n  padding: 1.4rem 0;\n}\n\n.MovieListItem-info\n  h4 {\n    display: block;\n    padding: 0;\n    font-size: 1.4rem;\n    font-weight: 200;\n    color: #000;\n    margin: 0;\n    overflow: hidden;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n  }\n\n  .MovieListItem-info\n    h6 {\n      display: block;\n      padding: 0.5rem 0 0;\n      font-size: 1.2rem;\n      font-weight: 200;\n      color: #aaa;\n      margin: 0;\n    }\n\n@keyframes ItemIn {\n  0% {\n    opacity: 0;\n    transform: translateY(100px);\n  }\n\n  100% {\n    opacity: 1;\n    transform: translateY(0px);\n  }\n}\n", ""]);
+
+/***/ }
+
+});
+//# sourceMappingURL=3.3.js.map

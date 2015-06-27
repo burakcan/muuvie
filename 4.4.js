@@ -1,1 +1,152 @@
-webpackJsonp([4],{243:function(t,e,n){var r=n(5),o=r.addons.PureRenderMixin,i=(n(178),n(232)),s=n(224),a=n(221),u=n(219);n(244),t.exports=r.createClass({displayName:"module.exports",mixins:[o,a.Mixin],statics:{willTransitionTo:function(t,e,n,r){var o=e.imdbID,u=i.state.getIn(["movie:result",o]);u||s.dispatch(new a.ACTION({type:"search:submit",payload:{searchType:"i",searchTerm:o}}))}},defineRequiredData:function(){return["movie:result","movie:busy"]},renderMeta:function(){var t=this.state["movie:result"].get(this.props.params.imdbID),e=t.get("Color"),n=["Genre","Language","Released","Runtime"];return n.map(function(n,o){return r.createElement("div",{key:o},r.createElement("span",{className:"MoviePage-meta-title",style:{color:e}},n,":"),t.get(n))})},renderVideo:function(){var t=window.innerWidth/100*60,e=t/1.77777,n=this.state["movie:result"].get(this.props.params.imdbID);return n.get("Video")?r.createElement("iframe",{width:t,height:e,src:"https://www.youtube.com/embed/"+n.get("Video")+"?rel=0&amp;controls=1&amp;showinfo=0",frameBorder:"0",allowFullScreen:!0}):r.createElement("span",null)},render:function(){if(this.state["movie:busy"])return r.createElement(u,null);if(!this.state["movie:result"].size)return r.createElement("div",null,"No result");var t=this.state["movie:result"].get(this.props.params.imdbID),e={backgroundImage:"url(http://crossorigin.me/"+t.get("Poster")+")",backgroundColor:t.get("Color")};return r.createElement("div",{className:"Page MoviePage"},r.createElement("div",{className:"MoviePage-poster-wrapper"},r.createElement("figure",{className:"MoviePage-poster is-blurry",style:e}),r.createElement("img",{ref:"posterImg",className:"MoviePage-poster",src:"http://crossorigin.me/"+t.get("Poster")})),r.createElement("article",{className:"MoviePage-content"},r.createElement("h2",{className:"MoviePage-title",style:{color:t.get("Color")}},t.get("Title")),r.createElement("header",{className:"MoviePage-meta"},this.renderMeta()),r.createElement("p",{className:"MoviePage-plot"},t.get("Plot")),r.createElement("figure",{ref:"video",className:"MoviePage-video"},this.renderVideo())))}})},244:function(t,e,n){var r=n(245);"string"==typeof r&&(r=[[t.id,r,""]]);n(4)(r,{});r.locals&&(t.exports=r.locals)},245:function(t,e,n){e=t.exports=n(3)(),e.push([t.id,".MoviePage{position:fixed;left:0;top:0;width:100%;height:100%}.MoviePage-poster-wrapper{height:100vh;width:40vw;position:relative;overflow:hidden;transform:translateX(-100%);animation:Poster .5s .2s 1 ease forwards;float:left}.MoviePage-poster,.MoviePage-poster-wrapper:after{position:absolute;transform:translateX(-50%) translateY(-50%)}.MoviePage-poster-wrapper:after{content:'';display:block;left:0;top:0;width:200%;height:200%;z-index:60;box-shadow:inset 3px 140px 70px #000}.MoviePage-poster{background-color:#000;width:50%;margin:0;background-repeat:no-repeat;background-size:cover;background-position:center;left:50%;top:50%;z-index:40}.MoviePage-poster[src='http://crossorigin.me/N/A']{display:none}.MoviePage-poster.is-blurry{position:absolute;left:0;top:0;width:100%;height:100%;z-index:20;-webkit-filter:blur(20px);transform:scale(2)}.MoviePage-content{width:60vw;height:100vh;overflow:auto;float:left;padding:40px;animation:FadeIn 1s 1 ease forwards}.MoviePage-title{display:block;padding:0 0 14px;margin:0;font-weight:200;font-size:2.2rem;border-bottom:1px solid}.MoviePage-plot{color:#000;font-size:1.4rem;line-height:2.4rem;margin:0;padding:24px 0;width:100%;clear:both}.MoviePage-meta{padding:24px 0 0;font-size:1.2rem;line-height:2.2rem;color:#aaa}.MoviePage-meta-title{margin-right:6px}.MoviePage-video{margin:24px 0}.MoviePage-video iframe{border:none;width:100%}@keyframes Poster{0%{transform:translateX(-100%)}100%{transform:translateX(0)}}",""])}});
+webpackJsonp([4],{
+
+/***/ 243:
+/***/ function(module, exports, __webpack_require__) {
+
+	var React                 = __webpack_require__(5);
+	var PureRenderMixin       = React.addons.PureRenderMixin;
+	var Router                = __webpack_require__(178);
+	var MovieStore            = __webpack_require__(232);
+	var Dispatcher            = __webpack_require__(224);
+	var Ore                   = __webpack_require__(221);
+	var Spinner               = __webpack_require__(219);
+	
+	__webpack_require__(244);
+	
+	module.exports = React.createClass({displayName: "module.exports",
+	  mixins: [PureRenderMixin, Ore.Mixin],
+	
+	  statics: {
+	    willTransitionTo: function(transition, params, query, callback){
+	      var imdbID = params.imdbID;
+	      var movie  = MovieStore.state.getIn(['movie:result', imdbID]);
+	      if (!movie) {
+	        Dispatcher.dispatch(new Ore.ACTION({
+	          type: 'search:submit',
+	          payload: {
+	            searchType: 'i',
+	            searchTerm: imdbID
+	          }
+	        }) );
+	      }
+	    }
+	  },
+	
+	  defineRequiredData: function(){
+	    return [
+	      'movie:result',
+	      'movie:busy'
+	    ]
+	  },
+	
+	  renderMeta: function(){
+	    var data   = this.state['movie:result'].get(this.props.params.imdbID);
+	    var color  = data.get('Color');
+	    var topics = ['Genre', 'Language', 'Released', 'Runtime'];
+	
+	    return topics.map(function(topic, i){
+	      return (
+	        React.createElement("div", {key: i}, 
+	          React.createElement("span", {className: "MoviePage-meta-title", style: {color: color}}, 
+	            topic, ":"
+	          ), 
+	          data.get(topic)
+	        )
+	      );
+	    })
+	  },
+	
+	  renderVideo: function(){
+	    var width   = (window.innerWidth / 100) * 60;
+	    var height  = width / 1.77777;
+	    var data    = this.state['movie:result'].get(this.props.params.imdbID);
+	
+	    if (!data.get('Video')) return (React.createElement("span", null));
+	
+	    return (
+	      React.createElement("iframe", {
+	        width: width, 
+	        height: height, 
+	        src: 'https://www.youtube.com/embed/'+data.get('Video')+'?rel=0&amp;controls=1&amp;showinfo=0', 
+	        frameBorder: "0", allowFullScreen: true})
+	    )
+	  },
+	
+	  render: function(){
+	    if (this.state['movie:busy'])
+	      return (React.createElement(Spinner, null));
+	
+	    if (!this.state['movie:result'].size)
+	      return (React.createElement("div", null, "No result"));
+	
+	    var data = this.state['movie:result'].get(this.props.params.imdbID);
+	    var blurryStyle = {
+	      backgroundImage : 'url(http://crossorigin.me/' + data.get('Poster')+')',
+	      backgroundColor : data.get('Color')
+	    }
+	
+	    return (
+	      React.createElement("div", {className: "Page MoviePage"}, 
+	        React.createElement("div", {className: "MoviePage-poster-wrapper"}, 
+	          React.createElement("figure", {className: "MoviePage-poster is-blurry", style: blurryStyle}), 
+	          React.createElement("img", {ref: "posterImg", className: "MoviePage-poster", src: 'http://crossorigin.me/' + data.get('Poster')})
+	        ), 
+	        React.createElement("article", {className: "MoviePage-content"}, 
+	          React.createElement("h2", {className: "MoviePage-title", style: {color: data.get('Color')}}, 
+	            data.get('Title')
+	          ), 
+	          React.createElement("header", {className: "MoviePage-meta"}, 
+	            this.renderMeta()
+	          ), 
+	          React.createElement("p", {className: "MoviePage-plot"}, 
+	            data.get('Plot')
+	          ), 
+	          React.createElement("figure", {ref: "video", className: "MoviePage-video"}, 
+	            this.renderVideo()
+	          )
+	        )
+	      )
+	    )
+	  }
+	});
+
+
+/***/ },
+
+/***/ 244:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	
+	// load the styles
+	var content = __webpack_require__(245);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(4)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./movie.css", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./movie.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 245:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(3)();
+	exports.push([module.id, ".MoviePage {\n  position: fixed;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n}\n\n.MoviePage-poster-wrapper {\n  height: 100vh;\n  width: 40vw;\n  position: relative;\n  overflow: hidden;\n  transform: translateX(-100%);\n  animation: Poster .5s .2s 1 ease forwards;\n  float: left;\n}\n\n.MoviePage-poster-wrapper:after {\n  content: '';\n  display: block;\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 200%;\n  height: 200%;\n  z-index: 60;\n  transform: translateX(-50%) translateY(-50%);\n  box-shadow: inset 3px 140px 70px #000;\n}\n\n.MoviePage-poster {\n  background-color: #000;\n  width: 50%;\n  position: absolute;\n  margin: 0;\n  background-repeat: no-repeat;\n  background-size: cover;\n  background-position: center;\n  left: 50%;\n  top: 50%;\n  transform: translateX(-50%) translateY(-50%);\n  z-index: 40;\n}\n\n.MoviePage-poster[src='http://crossorigin.me/N/A'] {\n  display: none;\n}\n\n.MoviePage-poster.is-blurry {\n  position: absolute;\n  left: 0;\n  top: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 20;\n  -webkit-filter: blur(20px);\n  transform: scale(2);\n}\n\n.MoviePage-content {\n  width: 60vw;\n  height: 100vh;\n  overflow: auto;\n  float: left;\n  padding: 40px;\n  animation: FadeIn 1s 1 ease forwards;\n}\n\n.MoviePage-title {\n  display: block;\n  padding: 0 0 14px;\n  margin: 0;\n  font-weight: 200;\n  font-size: 2.2rem;\n  border-bottom: 1px solid;\n}\n\n.MoviePage-plot {\n  color: #000;\n  font-size: 1.4rem;\n  line-height: 2.4rem;\n  margin: 0;\n  padding: 24px 0;\n  width: 100%;\n  clear: both;\n}\n\n.MoviePage-meta {\n  padding: 24px 0 0;\n  font-size: 1.2rem;\n  line-height: 2.2rem;\n  color: #aaa;\n}\n\n.MoviePage-meta-title {\n  margin-right: 6px;\n}\n\n.MoviePage-video {\n  margin: 24px 0;\n}\n\n.MoviePage-video iframe {\n  border: none;\n  width: 100%;\n}\n\n@keyframes Poster {\n  0% {\n    transform: translateX(-100%);\n  }\n  100% {\n    transform: translateX(0);\n  }\n}\n", ""]);
+
+/***/ }
+
+});
+//# sourceMappingURL=4.4.js.map
